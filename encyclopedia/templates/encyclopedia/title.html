@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if error %}
+        Error
+    {% else %}
+        {{ entry }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    
+    {% if error %}
+    <h1>This page does not exist yet.</h1>
+    <br>
+    <p>But you are always welcome to contribute your knowledge to our encyclopedia <a href="{% url 'create' %}">here</a>!</p>
+    {% else %}
+    {{ html | safe }} 
+    <a href="{% url 'edit' entry %}" method="post">Edit the page</a>
+    {% endif %}
+
+{% endblock %}
